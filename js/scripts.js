@@ -1,9 +1,9 @@
 var toppings = [
-  ["extra cheese", 1, 0],
-  ["pepperoni", 1.5, 1],
-  ["sausage", 1.5, 2],
-  ["onions", 1, 3],
-  ["bell peppers", 1, 4]
+  ["extra cheese", 1],
+  ["pepperoni", 1.5],
+  ["sausage", 1.5],
+  ["onions", 1],
+  ["bell peppers", 1]
 ]
 
 var sizes = [
@@ -48,11 +48,12 @@ Pizza.prototype.totalCost = function(){
 
 
 //  FRONT END
-var pizza = new Pizza();
+
 
 $(function(){
   $("#pizzaOrder").submit(function(){
     event.preventDefault();
+    var pizza = new Pizza();
     var pizzaSize = $("input:radio[name=pizzaSize]:checked").val();
     pizza.addSize(pizzaSize);
     $("input:checkbox[name=toppings]:checked").each(function(){
@@ -61,6 +62,5 @@ $(function(){
     });
     var totalCost = pizza.totalCost().toFixed(2);
     $("#cost").text(totalCost);
-    alert(pizza.totalCost());
   });
 });
