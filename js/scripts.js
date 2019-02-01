@@ -36,7 +36,13 @@ Pizza.prototype.addTopping = function(topping){
 
   };
 
-
+Pizza.prototype.totalCost = function(){
+  price = 0;
+  this.costBreakdown.forEach(function(cost){
+    price += cost;
+  });
+  return price;
+}
 
 
 
@@ -53,6 +59,8 @@ $(function(){
       var topping = $(this).val();
       pizza.addTopping(topping);
     });
-    alert(pizza.costBreakdown);
+    var totalCost = pizza.totalCost().toFixed(2);
+    $("#cost").text(totalCost);
+    alert(pizza.totalCost());
   });
 });
