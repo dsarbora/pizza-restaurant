@@ -62,5 +62,6 @@ $(function(){
     });
     var totalCost = pizza.totalCost().toFixed(2);
     $("#cost").text(totalCost);
+    $("#result").show();
   });
 });

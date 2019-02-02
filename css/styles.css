@@ -1,0 +1,12 @@
+#result{
+  display: none;
+}
+
+body{
+  background-color: #AAAAAA;
+  color: black;
+}
+
+p{
+  margin-top: 30px;
+}
