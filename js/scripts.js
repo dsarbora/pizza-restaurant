@@ -6,31 +6,56 @@ var toppings = [
   ["bell peppers", 1]
 ]
 
+function getChosenToppings(pizza){
+  var chosenToppings = $("input:checkbox[name=toppings]:checked");
+  chosenToppings.each(function(){
+    var topping = $(this).val();
+    pizza.addTopping(topping);
+  });
+};
+
 var sizes = [
   ["small", 8.99],
   ["medium", 10.99],
   ["large", 12.99]
 ]
 
-function Pizza(toppings, size, costBreakdown, cost){
-  this.toppings = [],
-  this.size = size,
-  this.costBreakdown = [],
-  this.cost = cost
+function PizzaList(pizzas){
+  this.pizzas = []
+}
+
+PizzaList.prototype.addPizza = function(pizza){
+  this.pizzas.push(pizza)
+
+}
+
+PizzaList.prototype.makePizza = function(){
+  pizza = new Pizza();
+  var pizzaSize = $("input:radio[name=pizzaSize]:checked").val();
+  pizza.addSize(pizzaSize);
+  this.addPizza(pizza)
+
+}
+
+function Pizza(/*toppings, size,*/ costBreakdown/*, cost*/){
+  //this.toppings = [],
+  //this.size = size,
+  this.costBreakdown = []//,
+  //this.cost = cost
 };
 
 Pizza.prototype.addSize = function(pizzaSize){
-  this.size = sizes[pizzaSize][0];
+  //this.size = sizes[pizzaSize][0];
   this.costBreakdown.push(sizes[pizzaSize][1]);
 }
 
 Pizza.prototype.addTopping = function(topping){
-    this.toppings.push(toppings[topping][0]);
+    //this.toppings.push(toppings[topping][0]);
     this.costBreakdown.push(toppings[topping][1]);
 
   };
 
-Pizza.prototype.totalCost = function(){
+Pizza.prototype.returnPrice = function(){
   price = 0;
   this.costBreakdown.forEach(function(cost){
     price += cost;
@@ -38,23 +63,16 @@ Pizza.prototype.totalCost = function(){
   return price;
 }
 
-
-
-
 //  FRONT END
-
+pizzaList = new PizzaList()
 
 $(function(){
   $("#pizzaOrder").submit(function(){
     event.preventDefault();
-    var pizza = new Pizza();
-    var pizzaSize = $("input:radio[name=pizzaSize]:checked").val();
-    pizza.addSize(pizzaSize);
-    $("input:checkbox[name=toppings]:checked").each(function(){
-      var topping = $(this).val();
-      pizza.addTopping(topping);
-    });
-    var totalCost = pizza.totalCost().toFixed(2);
+    pizzaList.makePizza()
+    var newPizza = pizzaList.pizzas[pizzaList.pizzas.length-1]
+    getChosenToppings(newPizza)
+    var totalCost = newPizza.returnPrice().toFixed(2);
     $("#cost").text(totalCost);
     $("#result").show();
   });
