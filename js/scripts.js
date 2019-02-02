@@ -12,12 +12,6 @@ var sizes = [
   ["large", 12.99]
 ]
 
-function Topping(name, cost, id){
-  this.type = type,
-  this.cost = cost,
-  this.id = id
-};
-
 function Pizza(toppings, size, costBreakdown, cost){
   this.toppings = [],
   this.size = size,
