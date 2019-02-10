@@ -12,14 +12,14 @@ _The submit button on this website adds various properties to a pizza object. It
 * _Program inputs are data collected from a form, which are then converted into prices via the "toppings" and "sizes" arrays._
 ------------------------------------------
 * _If only a size is specified, then only the price of that size is outputted._
-* _Example input: "Small"                       Output: 6.99._
+* _Example input: "Small"/Output: 6.99._
 ------------------------------------------
 * _If a size and toppings are specified, the price of the size, and each topping, are added and the total is outputted._
-* _Example input: "Small, pepperoni, sausage"   Output: 11.99._
+* _Example input: "Small, pepperoni, sausage"/Output: 11.99._
 ------------------------------------------
-* _If toppings are specified but size is not, the makePizza function will be unable to run and no output will show.
-* _Example input: "pepperoni, sausage"          Output: ''
-
+* _If toppings are specified but size is not, the makePizza function will be unable to run and no output will show._
+* _Example input: "pepperoni, sausage"/Output: ''_
+-------------------------------------------
 ## Setup/Installation Requirements
 
 * _A web browser is required to visit this website._
