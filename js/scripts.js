@@ -4,7 +4,7 @@ var toppings = [
   ["sausage", 1.5],
   ["onions", 1],
   ["bell peppers", 1]
-]
+];
 
 function getChosenToppings(pizza){
   var chosenToppings = $("input:checkbox[name=toppings]:checked");
@@ -18,11 +18,11 @@ var sizes = [
   ["small", 8.99],
   ["medium", 10.99],
   ["large", 12.99]
-]
+];
 
 function PizzaList(pizzas){
   this.pizzas = []
-}
+};
 
 PizzaList.prototype.addPizza = function(pizza){
   this.pizzas.push(pizza)
@@ -33,26 +33,20 @@ PizzaList.prototype.makePizza = function(){
   pizza = new Pizza();
   var pizzaSize = $("input:radio[name=pizzaSize]:checked").val();
   pizza.addSize(pizzaSize);
-  this.addPizza(pizza)
+  this.addPizza(pizza);
 
-}
+};
 
-function Pizza(/*toppings, size,*/ costBreakdown/*, cost*/){
-  //this.toppings = [],
-  //this.size = size,
-  this.costBreakdown = []//,
-  //this.cost = cost
+function Pizza(costBreakdown){
+  this.costBreakdown = []
 };
 
 Pizza.prototype.addSize = function(pizzaSize){
-  //this.size = sizes[pizzaSize][0];
   this.costBreakdown.push(sizes[pizzaSize][1]);
 }
 
 Pizza.prototype.addTopping = function(topping){
-    //this.toppings.push(toppings[topping][0]);
     this.costBreakdown.push(toppings[topping][1]);
-
   };
 
 Pizza.prototype.returnPrice = function(){
